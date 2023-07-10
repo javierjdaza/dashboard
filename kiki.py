@@ -115,6 +115,7 @@ def get_name_date_project(df):
 c1,c2,c3 = st.columns((1,3,1))
 with c2:
     st.title('Proyect Progress Dashboard 📊')
+    st.caption('Cristian Daza')
     st.write('---')
     uploaded_files = st.file_uploader("Choose a file", accept_multiple_files=True)
     for uploaded_file in uploaded_files:
