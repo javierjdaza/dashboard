@@ -1,0 +1,16 @@
+[theme]
+base="light"
+primaryColor="#cc3255"
+
+
+
+backgroundColor="#FFFBF5"
+textColor="#424242"
+
+
+
+[server]
+runOnSave = true
+
+
+
