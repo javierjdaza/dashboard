@@ -120,18 +120,21 @@ with c2:
     uploaded_files = st.file_uploader("Choose a file", accept_multiple_files=True)
     for uploaded_file in uploaded_files:
         bytes_data = uploaded_file.read()
-        df = pd.read_excel(uploaded_file)
-        nombre_proyecto,fecha = get_name_date_project(df)
-        fecha = fecha.replace('Fecha:','')
-        df_2 = etl(df)
-        fig = plot_categories(df_2)
-        fig_2 = plot_progress(df_2)
-        st.write('---')
-        st.write(' ')
-        st.header(f'🔧 Nombre del proyecto: {nombre_proyecto}')
-        st.subheader(f'📅 Fecha: {fecha}')
-        st.plotly_chart(fig, use_container_width=True)
-        st.plotly_chart(fig_2,use_container_width=True)
+        try:
+            df = pd.read_excel(uploaded_file)
+            nombre_proyecto,fecha = get_name_date_project(df)
+            fecha = fecha.replace('Fecha:','')
+            df_2 = etl(df)
+            fig = plot_categories(df_2)
+            fig_2 = plot_progress(df_2)
+            st.write('---')
+            st.write(' ')
+            st.header(f'🔧 Nombre del proyecto: {nombre_proyecto}')
+            st.subheader(f'📅 Fecha: {fecha}')
+            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig_2,use_container_width=True)
+        except:
+            st.error('Por favor asegurate de subir el archivo con el formato correcto')
     
     
 
